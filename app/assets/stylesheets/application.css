@@ -1,0 +1,219 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ html, body, .container{
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   min-width: 1014px;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+ }
+ .container{
+   background-color: #007ced;
+   background: linear-gradient(to bottom, #007ced 1%,#cce7ff 100%);
+ }
+ #cloud-intro{
+   position: relative;
+   height: 100%;
+   background: url(http://static.radulescu.me/examples/clouds/clouds1000.png);
+   background: url(http://static.radulescu.me/examples/clouds/clouds1000.png) 0 200px,
+   url(http://static.radulescu.me/examples/clouds/clouds1200_1.png) 0 300px,
+   url(http://static.radulescu.me/examples/clouds/clouds1000_blur3.png) 100px 250px;
+   animation: wind 20s linear infinite;
+ }
+ @keyframes wind{
+   0% {
+     background-position: 0 200px, 0 300px, 100px 250px;
+   }
+   100% {
+     background-position: 1000px 200px, 1200px 300px, 1100px 250px;
+   }
+
+ }
+
+.mainpagewrapper{
+  overflow: hidden;
+  position: relative;;
+  min-height: 450px;
+  height: 100vh;
+  margin: 0;
+  color: #ccc;
+  font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  background-image: url("/hills.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.leftpagewrapper {
+  height: 100%;
+  min-width: 21%;
+  display: flex;
+  flex-direction: column;
+}
+.centerpagewrapper {
+  padding-left: 120px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.rightpagewrapper {
+  flex-direction: column;
+  height: 100%;
+  min-width: 300px;
+  display: flex;
+}
+
+.centertopwrapper {
+  z-index: 10;
+  position: absolute;
+  left: 30%
+}
+
+.booth{
+  z-index: 5;
+  width: 600px;
+  height: 800px;
+  position: absolute;
+  background-image: url("/try.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.background{
+  margin-top: 227px;
+  margin-left: 26px;
+  z-index: 0;
+  width: 552px;
+  height: 400px;
+  position: absolute;
+  background-image: url("/back.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.instruction {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 285px;
+  height: 308px;
+  font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(to bottom, #3a404d, #181c26);
+  border-radius: 10px;
+  box-shadow: 0 7px 30px rgba(62, 9, 11, .3);
+  font-size: 25;
+  bottom: 1%;
+}
+.ballsRemain{
+  position: absolute;
+  right: 10%;
+}
+.points{
+  position: absolute;
+  left: 10%;
+}
+.credit{
+  position:fixed;
+  bottom:20px;
+  left:60px;
+  font-size:16px;
+}
+
+.instructionwrapper {
+  width: 285px;
+  display: flex;
+  flex-direction: column;
+}
+
+.instructionheader {
+  width: 285px;
+  height: 100px;
+  background: linear-gradient(to bottom, #3a404d, #181c26);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 7px 30px rgba(62, 9, 11, .3);
+}
+
+
+h1 {
+  font-size: 30px;
+  padding: 12px 57px 18px;
+  font-weight: 600;
+  color: 	#FFFFFF;
+  text-shadow: 0 1px 0 #ccc,
+  0 2px 0 #c9c9c9,
+  0 3px 0 #bbb,
+  0 4px 0 #b9b9b9,
+  0 5px 0 #aaa,
+  0 6px 1px rgba(0,0,0,.1),
+  0 0 5px rgba(0,0,0,.1),
+  0 1px 3px rgba(0,0,0,.3),
+  0 3px 5px rgba(0,0,0,.2),
+  0 5px 10px rgba(0,0,0,.25),
+  0 10px 10px rgba(0,0,0,.2),
+  0 20px 20px rgba(0,0,0,.15);
+}
+
+.rulewrapper{
+  background: linear-gradient(to bottom, #A1A1A1, #B8B8B8);
+  box-shadow: 0 7px 30px rgba(62, 9, 11, .3);
+  padding-left: 26px;
+}
+
+.rules {
+  font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+  z-index: 2;
+  width: 230px;
+  height: 100%;
+  background: none;
+  color: #fff;
+
+}
+
+canvas {
+  top: 180px;
+  display: flex;
+}
+
+span{
+  font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  font-size: 48px;
+  font-weight: 600;
+  color: 	#FFFFFF;
+  text-shadow: 0 1px 0 #ccc,
+  0 2px 0 #c9c9c9,
+  0 3px 0 #bbb,
+  0 4px 0 #b9b9b9,
+  0 5px 0 #aaa,
+  0 6px 1px rgba(0,0,0,.1),
+  0 0 5px rgba(0,0,0,.1),
+  0 1px 3px rgba(0,0,0,.3),
+  0 3px 5px rgba(0,0,0,.2),
+  0 5px 10px rgba(0,0,0,.25),
+  0 10px 10px rgba(0,0,0,.2),
+  0 20px 20px rgba(0,0,0,.15);
+}
+.button {
+  cursor: pointer;
+}
