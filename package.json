@@ -13,6 +13,9 @@
     "node": "4.1",
     "npm": "3.5.3"
   },
+  "scripts": {
+    "postinstall": "./node_modules/.bin/webpack"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
