@@ -1,7 +1,7 @@
 #Cup Game
 *Javascript, HTML5, Canvas, Ruby, Rails*
 
-[Cup Game](http://www.justintung.rocks/DrunkenBirds)
+[Cup Game](http://cup-game.herokuapp.com/)
 
 Cup Game is a 2D browser based carnival game.
 ##Photos
