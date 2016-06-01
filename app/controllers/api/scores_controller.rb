@@ -1,5 +1,6 @@
 class Api::ScoresController < ApplicationController
-  def def index
+
+  def index
     @scores = Score.all.order(score: :desc)
 
     render json: {scores: @scores}
@@ -9,7 +10,7 @@ class Api::ScoresController < ApplicationController
     @score = Score.new(post_params)
     @scores = Score.all.order(score: :desc)
 
-    if @score.save
+    if @score.save!
       render json: {score: @score}
     else
       render json: @score.errors.full_messages

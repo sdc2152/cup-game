@@ -1,13 +1,15 @@
 var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher.js');
-var GameStatusConstants = require('../constants/gameStatusConstants.js');
+var GameStatusConstants = require('../constants/gameStatusConstants');
 var GameStatusActions = require('../actions/gameStatusActions');
+var ApiUtil = require('../util/apiUtil');
 var GameStatusStore = new Store(AppDispatcher);
 
 var _gameStart = false;
 var _gameEnd = false;
 var _points = 0;
 var _ballsRemain = 100;
+var _scores = [];
 
 GameStatusStore.__onDispatch = function(payload){
   switch(payload.actionType) {
@@ -62,7 +64,7 @@ GameStatusStore.adjustBallsRemain = function(newBalls) {
 
 
 GameStatusStore.submitScore = function(name) {
-  apiUtil.submitScore({
+  ApiUtil.submitScore({
     name: name,
     score: _points
   })

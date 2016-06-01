@@ -29,7 +29,6 @@ const customStyles = {
 
 var GameEndModal = React.createClass({
 
-
   getInitialState: function (){
     return({
       modalIsOpen: false,
@@ -51,9 +50,10 @@ var GameEndModal = React.createClass({
     }
   },
 
-  // submitScore: function() {
-  //   GameStatusStore.submitScore(this.state.name)
-  // },
+  _nameChange: function(event){
+    event.preventDefault()
+    this.setState({name: event.target.value})
+  },
 
   openModal: function() {
     this.setState({modalIsOpen: true});
@@ -61,6 +61,7 @@ var GameEndModal = React.createClass({
 
   closeModal: function() {
     this.setState({modalIsOpen: false});
+    GameStatusStore.submitScore(this.state.name)
     GameStatusStore.gameReset()
   },
 
@@ -80,15 +81,15 @@ var GameEndModal = React.createClass({
 
           <input
             className="entername"
+            onChange={this._nameChange}
             />
 
         </div>
-        <a className="click button" onClick={this.closeModal}>RESTART</a>
+        <a className="click button"onClick={this.closeModal}>SUBMIT</a>
       </div>
     </Modal>;
   },
 
-  // <a className="click button" onClick={this.submitScore}>SUBMIT</a>
   render: function() {
     return (
       <div>

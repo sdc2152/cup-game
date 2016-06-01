@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160331232015) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "scores", force: :cascade do |t|
     t.string   "name",       null: false
     t.integer  "score",      null: false

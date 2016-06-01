@@ -14,5 +14,4 @@ The concept behind the game is to fill the cups with as many balls as possible w
 
 ### Bonus Features (To do)
 - Make some cups worth more points
-- Add a high score system
 - Add a penalty that subtracts points over time

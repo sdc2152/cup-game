@@ -1,11 +1,11 @@
 var GameStatusActions = require('../actions/gameStatusActions');
 
 module.exports = {
-  submitScore: function(params) {
+  submitScore: function(scores) {
     $.ajax({
       type: "POST",
       url: "api/scores",
-      scores: params,
+      data: {scores: scores},
       success: function (score) {
         GameStatusActions.receiveScore(score);
       }

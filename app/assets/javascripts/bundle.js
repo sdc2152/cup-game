@@ -21848,12 +21848,14 @@
 	var AppDispatcher = __webpack_require__(200);
 	var GameStatusConstants = __webpack_require__(203);
 	var GameStatusActions = __webpack_require__(204);
+	var ApiUtil = __webpack_require__(208);
 	var GameStatusStore = new Store(AppDispatcher);
 	
 	var _gameStart = false;
 	var _gameEnd = false;
 	var _points = 0;
 	var _ballsRemain = 100;
+	var _scores = [];
 	
 	GameStatusStore.__onDispatch = function (payload) {
 	  switch (payload.actionType) {
@@ -21905,7 +21907,7 @@
 	};
 	
 	GameStatusStore.submitScore = function (name) {
-	  apiUtil.submitScore({
+	  ApiUtil.submitScore({
 	    name: name,
 	    score: _points
 	  });
@@ -28870,9 +28872,10 @@
 	    }
 	  },
 	
-	  // submitScore: function() {
-	  //   GameStatusStore.submitScore(this.state.name)
-	  // },
+	  _nameChange: function (event) {
+	    event.preventDefault();
+	    this.setState({ name: event.target.value });
+	  },
 	
 	  openModal: function () {
 	    this.setState({ modalIsOpen: true });
@@ -28880,6 +28883,7 @@
 	
 	  closeModal: function () {
 	    this.setState({ modalIsOpen: false });
+	    GameStatusStore.submitScore(this.state.name);
 	    GameStatusStore.gameReset();
 	  },
 	
@@ -28922,19 +28926,19 @@
 	            'enter your name'
 	          ),
 	          React.createElement('input', {
-	            className: 'entername'
+	            className: 'entername',
+	            onChange: this._nameChange
 	          })
 	        ),
 	        React.createElement(
 	          'a',
 	          { className: 'click button', onClick: this.closeModal },
-	          'RESTART'
+	          'SUBMIT'
 	        )
 	      )
 	    );
 	  },
 	
-	  // <a className="click button" onClick={this.submitScore}>SUBMIT</a>
 	  render: function () {
 	    return React.createElement(
 	      'div',
@@ -33006,6 +33010,45 @@
 	};
 	
 	module.exports = PhysicsWorld;
+
+/***/ },
+/* 208 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var GameStatusActions = __webpack_require__(204);
+	
+	module.exports = {
+	  submitScore: function (scores) {
+	    $.ajax({
+	      type: "POST",
+	      url: "api/scores",
+	      data: { scores: scores },
+	      success: function (score) {
+	        GameStatusActions.receiveScore(score);
+	      }
+	    });
+	  },
+	
+	  fetchScores: function () {
+	    $.ajax({
+	      url: "api/scores",
+	      success: function () {
+	        GameStatusActions.receiveScores();
+	      }
+	    });
+	  },
+	
+	  deleteScore: function (params) {
+	    $.ajax({
+	      type: "DELETE",
+	      url: "api/scores",
+	      scores: params,
+	      success: function (score) {
+	        GameStatusActions.removeScore(score);
+	      }
+	    });
+	  }
+	};
 
 /***/ }
 /******/ ]);
